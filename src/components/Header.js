@@ -6,7 +6,17 @@ const Header = () => {
     return (
         <>
             <div className='profile'>
-                <div className='profile_btn'>OA</div>
+                <div className='profile_btn'>
+                    OA
+                    <div className='dropdown'>
+                        
+                        <div className='dropdown_logout'>
+                            <p href="#" className='logout_button'>Logout</p> 
+                        </div>
+                    </div>
+                     
+                </div>
+
                 <div className='new_btn'>
                     New 
                     <FaCaretDown />

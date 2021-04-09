@@ -46,6 +46,7 @@ body {
 
 .profile {
   display: flex;
+  position: relative;
   justify-content: space-between;
   padding: .5rem;
   width: 100%;
@@ -71,6 +72,32 @@ body {
   cursor: pointer;
   background: cadetblue;
 }
+
+/* Botão de Logou escondido */
+.dropdown_logout {
+  display: none;
+  position: absolute;
+  left: 15%;
+  background-color: #f1f1f1;
+  min-width: 5rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.logout_button {
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: .2rem 0;
+}
+
+.dropdown_logout p:hover {background-color: #ddd;}
+
+.profile_btn:hover .dropdown_logout {display: block;}
+
+
+
+/* ================================= */
 
 .new_btn {
   display: flex;
