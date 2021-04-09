@@ -99,7 +99,7 @@ body {
 
 /* ================================= */
 
-.new_btn {
+.btn {
   display: flex;
   border: 2px solid black;
   background-color: #fafafa;
@@ -200,9 +200,9 @@ hr.separator {
   grid-template-columns: 1fr 6fr 1fr 2fr;
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas: 
-    "senderPic senderName senderName timestamp"
+    "senderPic Name Name timestamp"
     "senderPic subject subject timestamp"
-    "senderPic mailbox senders senders";
+    "senderPic mailbox owners owners";
   border: 2px solid black;
   width: 100%;
   height: 4.5rem;
@@ -233,11 +233,11 @@ hr.separator {
   grid-area: senderPic;
 }
 
-.sender_name {
+.name {
   text-align:left;
   font-size: 1rem;
   font-weight: bold;
-  grid-area: senderName;
+  grid-area: Name;
 }
 
 .subject {
@@ -266,7 +266,7 @@ hr.separator {
   grid-area: timestamp;
 }
 
-.senders {
-  grid-area: senders;
+.owners {
+  grid-area: owners;
   justify-self: center;
 }
