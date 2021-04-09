@@ -77,7 +77,7 @@ body {
 .dropdown_logout {
   display: none;
   position: absolute;
-  left: 15%;
+  left: 5%;
   background-color: #f1f1f1;
   min-width: 5rem;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
