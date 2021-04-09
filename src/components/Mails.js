@@ -15,7 +15,7 @@ const Mails = ({ mailbox, id, name, subject, owner, users, timestamp }) => {
             {mails.subMenuItems.map((mail) => (
               <div className='message_box' key={mail.id}>
                 <div className='sender_pic'>
-                    {mail.id}
+                    {mail.owner}
                 </div>
                 <div className='name'>
                     {mail.name}
