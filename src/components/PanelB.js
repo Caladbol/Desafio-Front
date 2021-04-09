@@ -1,11 +1,12 @@
 import Menu from './Menu'
 import Mails from './Mails'
 
-const PanelB = () => {
+const PanelB = ({mailbox}) => {
     return (
+        // console.log(mailbox)
         <div className='panel panel_B'>
             <Menu />
-            <Mails />
+            <Mails mailbox={ mailbox }/>
         </div>
     )
 }

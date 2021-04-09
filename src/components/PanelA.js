@@ -3,11 +3,11 @@ import Accounts from './Accounts'
 
 
 
-const PanelA = () => {
+const PanelA = ({accounts}) => {
     return (
         <div className='panel panel_A'>
             <Header />
-            <Accounts />
+            <Accounts accounts={ accounts } />
         </div>
     )
 }
