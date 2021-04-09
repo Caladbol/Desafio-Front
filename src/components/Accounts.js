@@ -1,24 +1,23 @@
 import React, { useState } from 'react'
 import { FaCaretDown } from 'react-icons/fa'
 
-const Accounts = ({ id, name, accounts }) => {
+const Accounts = ({ id, name, accounts, show, onExpand }) => {
 
     return (
         <div className='accounts'>
             <React.Fragment>
                 {accounts.map((account => (
                     <div className='account' key={account.id}>
-                        <FaCaretDown />
-                        {account.name}
-                        <React.Fragment>
+                        <p className='account_name' onClick={onExpand}><FaCaretDown style={{ cursor: 'pointer' }} />{account.name}</p>
+                        {show && <React.Fragment>
                             {account.subMenus.map((box => (
-                                <div key={box.id} className='box'>
+                                <div className='box' key={box.id}>
                                     {box.name}
                                 </div>
-                                    )
-                                    ))}
-                        </React.Fragment>
+                            )))}
+                        </React.Fragment>}
                     </div>
+
                 )))}
             </React.Fragment>
             

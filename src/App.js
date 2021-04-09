@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react'
-import PanelA from './components/PanelA'
-import PanelB from './components/PanelB'
+import Header from './components/Header'
+import Accounts from './components/Accounts'
+import Menu from './components/Menu'
+import Mails from './components/Mails'
+
 
 
 const App = () => {
+  const [showBoxes, setShowBoxes] = useState(false)
+
+
+  // Get data from external API
   const [accounts, setAccount] = useState([])
 
   const [mailbox, setMails] = useState([])
@@ -38,12 +45,22 @@ const App = () => {
     console.log(dataMail)
     return dataMail
   }
-
+// =========================================
 
   return (
-      <div className="container">
-        <PanelA accounts={ accounts } />
-        <PanelB mailbox={ mailbox } />
+    <div className="container">
+      {/* Left Panel */}
+      <div className='panel panel_A'>
+        <Header />
+        <Accounts accounts={accounts} show={showBoxes} onExpand={() => setShowBoxes(!showBoxes)} />
+
+      </div>
+
+      {/* Right Panel */}
+      <div className='panel panel_B'>
+            <Menu />
+            <Mails mailbox={ mailbox }/>
+        </div>
 
       </div>
     );
