@@ -27,6 +27,7 @@ body {
   min-height: 18.75rem;
   border: 1.5px solid steelblue;
   overflow: auto;
+  height: 100%;
 }
 
 .panel_A {
@@ -72,12 +73,15 @@ body {
 }
 
 .new_btn {
+  display: flex;
   border: 2px solid black;
   background-color: #fafafa;
   text-align: center;
   text-decoration: none;
+  align-items: center;
+  justify-content: space-between;
   font-size: .8rem;
-  padding: .2rem;
+  padding: .2rem .2rem .2rem .4rem;
   width: 4rem;
   height: 1.5rem;
   font-weight: bold;
@@ -88,16 +92,25 @@ body {
 hr.separator {
   border: 2px solid rgb(54, 54, 54);
   border-radius: 50%;
-  width: 80%;
-  margin-left: 10%;
+  width: 90%;
+  margin-left: 5%;
 }
 
 .favoritos {
   display: flex;
   justify-content: space-between;
+  justify-items: center;
+  align-items: center;
   padding: .3rem .5rem 0 2rem;
   font-weight: bold;
 }
+
+.favoritos_ellipsis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 /* Estilos Painel B - Direito */
 .searchbar {
@@ -115,8 +128,11 @@ hr.separator {
 
 .acoes {
   display: flex;
-  align-content: space-between;
+  align-content: center;
+  align-items: center;
   padding-left: 5%;
+  padding-right: 1%;
+  justify-content: space-between;
 }
 
 .acoes_btns {
@@ -139,4 +155,91 @@ hr.separator {
   font-weight: bold;
   box-shadow: .125rem .125rem 0 0 black;
   cursor: pointer;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+}
+
+.fa-filter {
+  font-size: 2rem;
+}
+
+/* Estilos Caixas de Mensagens */
+
+.message_box {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: 
+    "senderPic senderName senderName timestamp"
+    "senderPic subject subject timestamp"
+    "senderPic mailbox senders senders";
+  border: 2px solid black;
+  width: 100%;
+  height: 4.5rem;
+  align-items: center;
+  justify-items: left;
+
+
+}
+
+.message_box:hover {
+  cursor: pointer;
+}
+
+.sender_pic {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background-color: #fff;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 50%;
+  border: 2px solid black;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin: .5rem;
+  grid-area: senderPic;
+}
+
+.sender_name {
+  text-align:left;
+  font-size: 1rem;
+  font-weight: bold;
+  grid-area: senderName;
+}
+
+.subject {
+  text-align:left;
+  font-size: .8rem;
+  font-weight: bold;
+  grid-area: subject;
+}
+
+.mailbox {
+  grid-area: mailbox;
+  display: flex;
+}
+
+.mailbox_name {
+  text-align:justify;
+  font-size: .8rem;
+  font-weight: bold;
+  padding-left: .7rem;
+}
+
+.timestamp {
+  justify-self: center;
+  font-size: .8rem;
+  font-weight: bold;
+  grid-area: timestamp;
+}
+
+.senders {
+  grid-area: senders;
+  justify-self: center;
 }
