@@ -8,6 +8,9 @@ import Login from './components/Login'
 
 
 const App = () => {
+  
+  const [boxSelect, setBoxSelect] = useState([])
+
   const [showBoxes, setShowBoxes] = useState(false)
 
 
@@ -34,7 +37,7 @@ const App = () => {
     const res = await fetch('http://my-json-server.typicode.com/EnkiGroup/DesafioReactEncontact/menus')
     const dataAcc = await res.json()
     
-    console.log(dataAcc)
+    // console.log(dataAcc)
 
     return dataAcc
   }
@@ -43,7 +46,7 @@ const App = () => {
     const res = await fetch('http://my-json-server.typicode.com/EnkiGroup/DesafioReactEncontact/items/')
     const dataMail = await res.json()
 
-    console.log(dataMail)
+    // console.log(dataMail)
     return dataMail
   }
 // =========================================
@@ -56,14 +59,14 @@ const App = () => {
       {/* Left Panel */}
       <div className='panel panel_A'>
         <Header />
-        <Accounts accounts={accounts} show={showBoxes} onExpand={() => setShowBoxes(!showBoxes)} />
+        <Accounts accounts={accounts} show={showBoxes} onExpand={() => setShowBoxes(!showBoxes)}  />
 
       </div>
 
       {/* Right Panel */}
       <div className='panel panel_B'>
             <Menu />
-            <Mails mailbox={ mailbox }/>
+            <Mails mailbox={ mailbox, boxSelect } />
         </div>
 
       </div>

@@ -1,17 +1,30 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
+import { boxSelect } from './Accounts'
 
 
 import { FaWhatsapp } from 'react-icons/fa'
 
 
-const Mails = ({ mailbox, id, name, subject, owner, users, timestamp }) => {
+const Mails = ({ mailbox, timestamp, boxSelect }) => {
+  const mList = [];
+  const boxId = {boxSelect};
+  const mail = [];
+
+  for (let i = 0; i < mailbox.length; i++){
+    { (mailbox[i].id) == boxSelect && mList.push(mailbox[i]) }
+  }
+
+  console.log(mailbox);
+  console.log(mList);
+  console.log(boxId);
+
   return (
-    // console.log(mailbox)
     <div>
+    
       <React.Fragment>
-        {mailbox.map((mails) => (
-          <React.Fragment key={mails.id}>
+        {mList.map((mails) => (
+          <React.Fragment key={boxSelect}>
             {mails.subMenuItems.map((mail) => (
               <div className='message_box' key={mail.id}>
                 <div className='sender_pic'>
@@ -38,6 +51,7 @@ const Mails = ({ mailbox, id, name, subject, owner, users, timestamp }) => {
           </React.Fragment>
         ))}
       </React.Fragment>
+
     </div>
   )
 }

@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaCaretDown } from 'react-icons/fa'
 
-const Accounts = ({ id, name, accounts, show, onExpand }) => {
+const Accounts = ({ accounts, show, onExpand }) => {
+    
+    const [boxSelect, setBoxSelect] = useState([])
+
 
     return (
         <div className='accounts'>
@@ -11,11 +14,13 @@ const Accounts = ({ id, name, accounts, show, onExpand }) => {
                         <p className='account_name' onClick={onExpand}><FaCaretDown style={{ cursor: 'pointer' }} />{account.name}</p>
                         {show && <React.Fragment>
                             {account.subMenus.map((box => (
-                                <div className='box' key={box.id}>
+                                <div className='box' key={box.id} onClick={() => setBoxSelect(box.id)} >
                                     {box.name}
                                 </div>
                             )))}
                         </React.Fragment>}
+
+                        {console.log(boxSelect)}
                     </div>
 
                 )))}
@@ -25,4 +30,6 @@ const Accounts = ({ id, name, accounts, show, onExpand }) => {
     )
 }
 
+
 export default Accounts
+
