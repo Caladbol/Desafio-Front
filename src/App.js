@@ -15,6 +15,12 @@ const App = () => {
 
   const [showBoxes, setShowBoxes] = useState([])
 
+  const [checked, setChecked] = useState([])
+
+  const [allChecked, setAllChecked] = useState(false)
+
+  const [archive, setArchive] = useState([])
+
 
   // Get data from external API
  
@@ -72,8 +78,10 @@ const App = () => {
 
         {/* Right Panel */}
         <div className='panel panel_B'>
-              <Menu />
-          <Mails mailbox={mailbox} boxSelect={ boxSelect } />
+          <Menu allChecked={allChecked} checkAll={() => setAllChecked(!allChecked)} />
+          <p>checkd is: { checked }</p>
+          <Mails mailbox={mailbox} boxSelect={boxSelect} archive={archive} setArchive={setArchive} allChecked={allChecked} checked={checked} setChecked={setChecked}/>
+          
           </div>
       </>
       }

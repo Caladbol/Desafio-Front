@@ -1,20 +1,29 @@
-import React, {useEffect} from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { FaWhatsapp } from 'react-icons/fa'
 
-
-const Mails = ({ mailbox, timestamp, boxSelect }) => {
+// Gerador da Lista de mensagens
+const Mails = ({ mailbox, timestamp, boxSelect, archive, setArchive, setChecked, checked }) => {
   const mList = [];
-  const boxId = {boxSelect};
-  const mail = [];
+  const boxId = { boxSelect };
+  const filtered = checked;
+
+  
+
+
 
   for (let i = 0; i < mailbox.length; i++){
-    { (mailbox[i].id) == boxSelect && mList.push(mailbox[i]) }
+    mailbox[i].id === boxSelect && mList.push(mailbox[i])
   }
 
   console.log(mailbox);
   console.log(mList);
   console.log(boxId);
+
+  // Gerador mensagens arquivadas
+  const [mouseOver, setMouseOver] = useState(false)
+  
+
 
   return (
     <div>
@@ -23,9 +32,11 @@ const Mails = ({ mailbox, timestamp, boxSelect }) => {
         {mList.map((mails) => (
           <React.Fragment key={boxSelect}>
             {mails.subMenuItems.map((mail) => (
-              <div className='message_box' key={mail.id}>
-                <div className='sender_pic'>
-                    {mail.owner}
+              <div className='message_box' key={mail.id} >
+                <div className='sender_pic'  onMouseEnter={() => setMouseOver(true)} onMouseLeave={() => setMouseOver(false)} >
+                  {mouseOver === true ? 
+                    <input type='checkbox' className='mail_select' onChange={() => (checked.indexOf(mail.id) > -1) ? (setChecked(() => filtered.filter(num => num !== mail.id))) : setChecked(() => [...filtered, mail.id])}  /> : <>{mail.owner}</>
+                    }
                 </div>
                 <div className='name'>
                     {mail.name}

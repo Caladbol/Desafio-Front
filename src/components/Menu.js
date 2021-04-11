@@ -4,7 +4,7 @@ import { FaFilter } from "react-icons/fa"
 
 
 
-const Menu = () => {
+const Menu = ({ allChecked, checkAll }) => {
     return (
         <div>
             <div className='searchbar'>
@@ -15,7 +15,8 @@ const Menu = () => {
             <hr className='separator' />
             <div className='acoes'>
                 <div className='acoes_btns'>
-                    <div className='acoes_checkbox'><input type="checkbox"/></div>
+                    <input type="checkbox" className='acoes_checkbox' checked={allChecked} onChange={checkAll} />
+                    
                     <Button text='Atribuir' btnclass='acoes_btn' />
                     <Button text='Arquivar' btnclass='acoes_btn' />
                     <Button text='Agendar' btnclass='acoes_btn' />
