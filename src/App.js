@@ -9,12 +9,15 @@ import Login from './components/Login'
 
 const App = () => {
   
+  const [loggedIn, setLoggedIn] = useState(false)
+
   const [boxSelect, setBoxSelect] = useState([])
 
   const [showBoxes, setShowBoxes] = useState(false)
 
 
   // Get data from external API
+ 
   const [accounts, setAccount] = useState([])
 
   const [mailbox, setMails] = useState([])
@@ -54,21 +57,32 @@ const App = () => {
   return (
     <div className="container">
 
+      {/* Login screen */}
+      {!loggedIn && 
+        <div className='login'>
+          <input type="text" placeholder="User" className='login_form' />
+          <input type="password" placeholder="Password" className='login_form' />
+          <button className='login_btn' onClick={() => setLoggedIn(true)}  >Log In</button>
+        </div>
       
+      }
 
-      {/* Left Panel */}
-      <div className='panel panel_A'>
-        <Header />
-        <Accounts accounts={accounts} show={showBoxes} onExpand={() => setShowBoxes(!showBoxes)}  />
+      {loggedIn &&
+      <>
+        {/* Left Panel */}
+        <div className='panel panel_A'>
+          <Header logOut ={() => setLoggedIn(!loggedIn)} />
+          <Accounts accounts={accounts} show={showBoxes} onExpand={() => setShowBoxes(!showBoxes)}  />
 
-      </div>
-
-      {/* Right Panel */}
-      <div className='panel panel_B'>
-            <Menu />
-            <Mails mailbox={ mailbox, boxSelect } />
         </div>
 
+        {/* Right Panel */}
+        <div className='panel panel_B'>
+              <Menu />
+              <Mails mailbox={ mailbox, boxSelect } />
+          </div>
+      </>
+      }
       </div>
     );
   }

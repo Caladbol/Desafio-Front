@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
-*, button, button:hover, button:active, button:focus {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -23,6 +23,23 @@ body {
 
 }
 
+/* Estilos tela de login */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login_form {
+  margin-bottom: .5rem;
+}
+
+.login_btn {
+  padding: .2rem .5rem;
+}
+
 .panel {
   min-height: 18.75rem;
   border: 1.5px solid steelblue;
@@ -33,9 +50,7 @@ body {
 .panel_A {
   min-width: fit-content;
   resize: horizontal;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  padding: 0 .5rem 0 0;
 }
 .panel_B {
   justify-content: center;
@@ -137,16 +152,17 @@ hr.separator {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 .5rem 0 0;
   
 }
 
 /* Estilos Contas e Caixas de E-mail */
 
 
-.account {
+/* .account {
   
   
-}
+} */
 
 .account_name {
   cursor: pointer;
