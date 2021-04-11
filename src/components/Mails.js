@@ -1,8 +1,5 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
-import { boxSelect } from './Accounts'
-
-
 import { FaWhatsapp } from 'react-icons/fa'
 
 

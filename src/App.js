@@ -13,7 +13,7 @@ const App = () => {
 
   const [boxSelect, setBoxSelect] = useState([])
 
-  const [showBoxes, setShowBoxes] = useState(false)
+  const [showBoxes, setShowBoxes] = useState([])
 
 
   // Get data from external API
@@ -58,28 +58,22 @@ const App = () => {
     <div className="container">
 
       {/* Login screen */}
-      {!loggedIn && 
-        <div className='login'>
-          <input type="text" placeholder="User" className='login_form' />
-          <input type="password" placeholder="Password" className='login_form' />
-          <button className='login_btn' onClick={() => setLoggedIn(true)}  >Log In</button>
-        </div>
+      {!loggedIn && <Login logIn={() => setLoggedIn(true)} />}
       
-      }
-
+      {/* Main screen */}
       {loggedIn &&
       <>
         {/* Left Panel */}
         <div className='panel panel_A'>
           <Header logOut ={() => setLoggedIn(!loggedIn)} />
-          <Accounts accounts={accounts} show={showBoxes} onExpand={() => setShowBoxes(!showBoxes)}  />
+          <Accounts accounts={accounts} show={showBoxes} onExpand={setShowBoxes} boxSelect={boxSelect} setBox={setBoxSelect} />
 
         </div>
 
         {/* Right Panel */}
         <div className='panel panel_B'>
               <Menu />
-              <Mails mailbox={ mailbox, boxSelect } />
+          <Mails mailbox={mailbox} boxSelect={ boxSelect } />
           </div>
       </>
       }
