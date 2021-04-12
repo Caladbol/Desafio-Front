@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { FaWhatsapp } from 'react-icons/fa'
 
+
 // Gerador da Lista de mensagens
-const Mails = ({ mailbox, timestamp, boxSelect, archive, setArchive, setChecked, checked }) => {
+const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked }) => {
   const mList = [];
   const boxId = { boxSelect };
   const filtered = checked;
@@ -16,9 +17,6 @@ const Mails = ({ mailbox, timestamp, boxSelect, archive, setArchive, setChecked,
     mailbox[i].id === boxSelect && mList.push(mailbox[i])
   }
 
-  console.log(mailbox);
-  console.log(mList);
-  console.log(boxId);
 
   // Gerador mensagens arquivadas
   const [mouseOver, setMouseOver] = useState(false)
@@ -30,13 +28,17 @@ const Mails = ({ mailbox, timestamp, boxSelect, archive, setArchive, setChecked,
     
       <React.Fragment>
         {mList.map((mails) => (
-          <React.Fragment key={boxSelect}>
+          <React.Fragment key={boxId}>
             {mails.subMenuItems.map((mail) => (
               <div className='message_box' key={mail.id} >
-                <div className='sender_pic'  onMouseEnter={() => setMouseOver(true)} onMouseLeave={() => setMouseOver(false)} >
-                  {mouseOver === true ? 
+                <div className='sender_pic'
+                  onMouseEnter={() => setMouseOver(true)}
+                  onMouseLeave={() => setMouseOver(false)} >
+
+                  {checked.length > 0 ? <input type='checkbox' className='mail_select' defaultChecked={filtered.includes(mail.id) && true} onChange={() => (checked.indexOf(mail.id) > -1) ? (setChecked(() => filtered.filter(num => num !== mail.id))) : setChecked(() => [...filtered, mail.id])}  /> : mouseOver === true ?
                     <input type='checkbox' className='mail_select' onChange={() => (checked.indexOf(mail.id) > -1) ? (setChecked(() => filtered.filter(num => num !== mail.id))) : setChecked(() => [...filtered, mail.id])}  /> : <>{mail.owner}</>
-                    }
+                    } 
+                  
                 </div>
                 <div className='name'>
                     {mail.name}
@@ -46,7 +48,20 @@ const Mails = ({ mailbox, timestamp, boxSelect, archive, setArchive, setChecked,
                 </div>
                 <div className='mailbox'>
                     <FaWhatsapp />
-                    <div className='mailbox_name'>Caixa de Entrada</div> 
+                  <div>
+                    <React.Fragment>
+                      {box.map((boxname => (
+                        <React.Fragment>
+                          {boxname.subMenus.map(boxn => (
+                            <>{mails.id === boxn.id && <div className='mailbox_name'>{boxn.name}</div>}</>
+                          )
+                          )}
+                        </React.Fragment>
+                      )
+
+                      ))}
+                    </React.Fragment>
+                  </div> 
                 </div>
                 <div className='timestamp'>
                     {timestamp}

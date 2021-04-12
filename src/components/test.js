@@ -24,18 +24,14 @@ const mailbox = [
         }]
     }
 ];
-const mList = [];
+const mList = [1];
 const sList = [];
 const selectedId = [3];
 
-for (let i = 0; i < idList.length; i++){
-    { ((mailbox[i].id).toString()).indexOf(selectedId.toString()) == 0 && mList.push(mailbox[i]) }
+console.log(mailbox);
 
-}
-
-for (let i = 0; i < mList.length; i++){
-    sList.push(mList[i].subList)
-}
-
-console.log(nList);
-console.log(sList);
+const myArray = mailbox.id.filter( function( el ) {
+    return !mList.includes( el );
+});
+  
+console.log(mailbox);
