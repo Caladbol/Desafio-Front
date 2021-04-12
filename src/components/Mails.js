@@ -28,7 +28,7 @@ const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked }) => {
     
       <React.Fragment>
         {mList.map((mails) => (
-          <React.Fragment key={boxId}>
+          <React.Fragment key={mails.id}>
             {mails.subMenuItems.map((mail) => (
               <div className='message_box' key={mail.id} >
                 <div className='sender_pic'
@@ -51,9 +51,9 @@ const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked }) => {
                   <div>
                     <React.Fragment>
                       {box.map((boxname => (
-                        <React.Fragment>
+                        <React.Fragment >
                           {boxname.subMenus.map(boxn => (
-                            <>{mails.id === boxn.id && <div className='mailbox_name'>{boxn.name}</div>}</>
+                            <>{mails.id === boxn.id && <div className='mailbox_name' key={mails.id} >{boxn.name}</div>}</>
                           )
                           )}
                         </React.Fragment>

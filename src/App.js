@@ -68,16 +68,19 @@ const App = () => {
       {!loggedIn && <Login logIn={() => setLoggedIn(true)} />}
       
       {/* Main screen */}
+      
       {loggedIn &&
       <>
         {/* Left Panel */}
+
         <div className='panel panel_A'>
-          <Header logOut ={() => setLoggedIn(!loggedIn)}  />
+          <Header logOut ={() => setLoggedIn(!loggedIn)} setShowLogOut={() => setShowLogOut(!showLogOut)} showLogOut={showLogOut} />
           <Accounts accounts={accounts} show={showBoxes} onExpand={setShowBoxes} boxSelect={boxSelect} setBox={setBoxSelect} />
 
         </div>
 
         {/* Right Panel */}
+
         <div className='panel panel_B'>
           <Menu allChecked={allChecked} checkAll={() => setAllChecked(!allChecked)} checked={checked} setChecked={setChecked} mailbox={mailbox} setMails={setMails} boxSelect={boxSelect} />
           <p>checkd is: { checked }</p>

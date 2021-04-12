@@ -5,23 +5,24 @@ import {FaEllipsisV} from 'react-icons/fa'
 
 
 const Header = ({ user, logOut, showLogOut, setShowLogOut}) => {
-    const onClick = () => {
-        console.log('click')
-    }
+
 
     return (
         <>
             <div className='profile'>
-                <div className='profile_btn'>
+                <div className='profile_btn' onClick={setShowLogOut} onMouseLeave={showLogOut ? setShowLogOut : undefined}>
                     {user}
-                    <div className='dropdown'  >
+                    {showLogOut && <div className='dropdown_logout' onClick={logOut} >
+                        Logout
+                    </div>}
+                    <div className='status' >
                         
                     </div>
-                     
                 </div>
 
+
                 <div>
-                    <Button text='New' onClick={onClick} icon={<FaCaretDown />} />
+                    <Button text='New' icon={<FaCaretDown />} />
                     
                 </div>
             </div>
