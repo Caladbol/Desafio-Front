@@ -7,6 +7,7 @@ import Login from './components/Login'
 
 
 
+
 const App = () => {
   
   const [loggedIn, setLoggedIn] = useState(false)
@@ -20,6 +21,8 @@ const App = () => {
   const [checked, setChecked] = useState([])
 
   const [allChecked, setAllChecked] = useState(false)
+
+  
 
 
 
@@ -73,18 +76,16 @@ const App = () => {
       <>
         {/* Left Panel */}
 
-        <div className='panel panel_A'>
+        <div className='panel panel_A' >
           <Header logOut ={() => setLoggedIn(!loggedIn)} setShowLogOut={() => setShowLogOut(!showLogOut)} showLogOut={showLogOut} />
           <Accounts accounts={accounts} show={showBoxes} onExpand={setShowBoxes} boxSelect={boxSelect} setBox={setBoxSelect} />
-
         </div>
 
         {/* Right Panel */}
 
         <div className='panel panel_B'>
-          <Menu allChecked={allChecked} checkAll={() => setAllChecked(!allChecked)} checked={checked} setChecked={setChecked} mailbox={mailbox} setMails={setMails} boxSelect={boxSelect} />
-          <p>checkd is: { checked }</p>
-          <Mails box={ accounts } mailbox={mailbox} boxSelect={boxSelect} checked={checked} setChecked={setChecked}/>
+          <Menu allChecked={allChecked} checkAll={() => setAllChecked(!allChecked)} checked={checked} setChecked={() => setChecked([])} mailbox={mailbox} setMails={setMails} boxSelect={boxSelect} />
+          <Mails box={accounts} mailbox={mailbox} boxSelect={boxSelect} checked={checked} setChecked={setChecked} allChecked={allChecked} />
           
           </div>
       </>

@@ -4,10 +4,11 @@ import { FaWhatsapp } from 'react-icons/fa'
 
 
 // Gerador da Lista de mensagens
-const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked }) => {
+const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked, allChecked }) => {
   const mList = [];
-  const boxId = { boxSelect };
   const filtered = checked;
+  const checkAll = allChecked;
+
 
   
 
@@ -35,9 +36,9 @@ const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked }) => {
                   onMouseEnter={() => setMouseOver(true)}
                   onMouseLeave={() => setMouseOver(false)} >
 
-                  {checked.length > 0 ? <input type='checkbox' className='mail_select' defaultChecked={filtered.includes(mail.id) && true} onChange={() => (checked.indexOf(mail.id) > -1) ? (setChecked(() => filtered.filter(num => num !== mail.id))) : setChecked(() => [...filtered, mail.id])}  /> : mouseOver === true ?
-                    <input type='checkbox' className='mail_select' onChange={() => (checked.indexOf(mail.id) > -1) ? (setChecked(() => filtered.filter(num => num !== mail.id))) : setChecked(() => [...filtered, mail.id])}  /> : <>{mail.owner}</>
-                    } 
+                  {filtered.length > 0 ? <input type='checkbox' id="check" className='mail_select' checked={checkAll ? true : undefined} onChange={() => (filtered.indexOf(mail.id) > -1) ? (setChecked(() => filtered.filter(num => num !== mail.id))) : setChecked(() => [...filtered, mail.id])} readOnly /> : mouseOver === true ?
+                    <input type='checkbox' id="check" className='mail_select' checked={checkAll ? true : undefined} onChange={() => (filtered.indexOf(mail.id) > -1) ? (setChecked(() => filtered.filter(num => num !== mail.id))) : setChecked(() => [...filtered, mail.id])} readOnly /> : <>{mail.owner}</>
+                  }
                   
                 </div>
                 <div className='name'>
@@ -67,7 +68,7 @@ const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked }) => {
                     {timestamp}
                 </div>
                 <div className='owners'>
-                    {mail.users}
+                   {mail.users}
                 </div>
               </div>
             ))}

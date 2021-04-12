@@ -5,32 +5,36 @@ import React from 'react'
 
 
 
-const Menu = ({ allChecked, checkAll, checked, boxSelect, mailbox, setMails }) => {
+const Menu = ({ allChecked, checkAll, checked, setChecked, boxSelect, mailbox, setMails }) => {
     const mList = [];
-    const checkedupd = checked;
+    const allCheckedUpd = allChecked;
+    const checkedUpd = checked;
 
-    for (let i = 0; i < mailbox.length; i++){
-    mailbox[i].id === boxSelect && mList.push(mailbox[i])
+    function messageList() {
+        for (let i = 0; i < mailbox.length; i++){
+            mailbox[i].id === boxSelect && mList.push(mailbox[i])
+            }
     }
+    messageList();
     
+    // function refreshMails() {
+    //     if (boxChanged !== boxSelect) {
+    //         messageList();
+    //     } else if (mList.subMenuItems === undefined) {
+    //         messageList();
+    //     }
+    // }
     
     function checksHandler() {
-        for (let i = 0; i < checked.length; i++) {
-            console.log("mlist value", mList[0].subMenuItems[checked[i]-1].id)
-            console.log("Check value", checked[i])
-            console.log("index value", mList[0].subMenuItems[checked[i]-1].id.indexOf(checked[i]))
-            console.log("index2 value", checked[mList[0].subMenuItems[checked[i]-1].id.findIndex(checked)])
-            
-
-            mList[0].subMenuItems.splice(mList[0].subMenuItems.id.findIndex(checked), 1)
-            // if (mList[0].subMenuItems[checked[i]-1].id === checked[mList[0].subMenuItems[checked[i]-1].id.indexOf(checked[i])]) {
-            //     mList[0].subMenuItems.splice(mList[0].subMenuItems[checked[i]-1].id.indexOf(checked[i]), 1)
-            // }
-            
-            
+        var i = 0;
+        while (i < mList[0].subMenuItems.length) {
+            if (checkedUpd.indexOf(mList[0].subMenuItems[0].id) > -1) {
+                mList[0].subMenuItems.splice(i, 1);
+            } else { i++; }
         }
-        setMails(mList)
-        console.log(mList)
+        setMails(mList);
+
+
     }
     return (
         <div>
@@ -42,11 +46,11 @@ const Menu = ({ allChecked, checkAll, checked, boxSelect, mailbox, setMails }) =
             <hr className='separator' />
             <div className='acoes'>
                 <div className='acoes_btns'>
-                    <input type="checkbox" className='acoes_checkbox' checked={allChecked} onChange={checkAll}  />
+                    <input type="checkbox" className='acoes_checkbox' checked={allCheckedUpd} onClick={checkAll} onChange={checkedUpd.length > 0 ? (allCheckedUpd ? setChecked : undefined) : undefined} readOnly />
 
                     
                     <Button text='Atribuir' btnclass='acoes_btn' />
-                    <Button text='Arquivar' btnclass='acoes_btn' onClick={checksHandler} />
+                    <Button text='Arquivar' btnclass='acoes_btn' onClick={() => { checksHandler(); setChecked()}}  />
                     
                     
                     <Button text='Agendar' btnclass='acoes_btn' />

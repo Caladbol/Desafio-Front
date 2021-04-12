@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaCaretDown } from 'react-icons/fa'
 
-const Accounts = ({ accounts, show, onExpand, boxSelect, setBox }) => {
+const Accounts = ({ accounts, show, onExpand, setBox }) => {
     const collapse = show;
 
     return (
