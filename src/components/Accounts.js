@@ -8,7 +8,7 @@ const Accounts = ({ accounts, show, onExpand, boxSelect, setBox }) => {
             <React.Fragment>
                 {accounts.map((account => (
                     <div className='account' key={account.id}>
-                        <p className='account_name'  onClick={() => onExpand(account.id)}><FaCaretDown style={{ cursor: 'pointer' }} />{account.name}</p>
+                        <p className='account_name'  onClick={() => (show === account.id ? onExpand([]) : onExpand(account.id))}><FaCaretDown style={{ cursor: 'pointer' }} />{account.name}</p>
                         
                         {account.id === show && <React.Fragment>
                             {account.subMenus.map((box => (

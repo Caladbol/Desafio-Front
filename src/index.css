@@ -29,22 +29,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgb(119, 227, 235), rgb(74, 184, 192), rgb(105, 153, 156));
 }
 
-.login_form {
-  margin-bottom: .5rem;
+.login_header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fffefe;
+  text-shadow: .20rem .15rem  0 rgb(24, 24, 24);
 }
 
-.login_btn {
-  padding: .2rem .5rem;
-}
 
 .panel {
   min-height: 18.75rem;
   border: 1.5px solid steelblue;
   overflow: auto;
   height: 100%;
+  background-image: linear-gradient(rgb(119, 227, 235), rgb(74, 184, 192), rgb(105, 153, 156));
 }
 
 .panel_A {
@@ -106,9 +113,6 @@ body {
   padding: .2rem 0;
 }
 
-.dropdown_logout p:hover {background-color: #ddd;}
-
-.profile_btn:hover .dropdown_logout {display: block;}
 
 
 
@@ -159,15 +163,18 @@ hr.separator {
 /* Estilos Contas e Caixas de E-mail */
 
 
-/* .account {
+.account {
+  background-color:rgb(119, 227, 235);
+  border: 1px solid black;
+  padding-right: 1rem;
   
-  
-} */
+}
 
 .account_name {
   cursor: pointer;
   width: fit-content;
   padding-bottom: .5rem;
+  
 }
 
 .box {

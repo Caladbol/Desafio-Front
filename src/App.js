@@ -11,6 +11,8 @@ const App = () => {
   
   const [loggedIn, setLoggedIn] = useState(false)
 
+  const [showLogOut, setShowLogOut] = useState(false)
+
   const [boxSelect, setBoxSelect] = useState([])
 
   const [showBoxes, setShowBoxes] = useState([])
@@ -70,7 +72,7 @@ const App = () => {
       <>
         {/* Left Panel */}
         <div className='panel panel_A'>
-          <Header logOut ={() => setLoggedIn(!loggedIn)} />
+          <Header logOut ={() => setLoggedIn(!loggedIn)}  />
           <Accounts accounts={accounts} show={showBoxes} onExpand={setShowBoxes} boxSelect={boxSelect} setBox={setBoxSelect} />
 
         </div>

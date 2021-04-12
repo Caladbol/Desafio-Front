@@ -4,7 +4,7 @@ import { FaCaretDown } from 'react-icons/fa'
 import {FaEllipsisV} from 'react-icons/fa'
 
 
-const Header = ({ user, logOut}) => {
+const Header = ({ user, logOut, showLogOut, setShowLogOut}) => {
     const onClick = () => {
         console.log('click')
     }
@@ -14,11 +14,8 @@ const Header = ({ user, logOut}) => {
             <div className='profile'>
                 <div className='profile_btn'>
                     {user}
-                    <div className='dropdown'>
+                    <div className='dropdown'  >
                         
-                        <div className='dropdown_logout'>
-                            <p href="#" className='logout_button' onClick={logOut}  >Logout</p> 
-                        </div>
                     </div>
                      
                 </div>
