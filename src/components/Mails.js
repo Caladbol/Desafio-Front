@@ -8,7 +8,7 @@ const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked, allChe
   const mList = [];
   const filtered = checked;
   const checkAll = allChecked;
-
+  const displace = [0, 20, 40, 60];
 
   
 
@@ -51,16 +51,16 @@ const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked, allChe
                     <FaWhatsapp />
                   <div>
                     <React.Fragment>
-                      {box.map((boxname => (
-                        <React.Fragment >
-                          {boxname.subMenus.map(boxn => (
-                            <>{mails.id === boxn.id && <div className='mailbox_name' key={mails.id} >{boxn.name}</div>}</>
+                      {box.map((boxname, boxid) => (
+                        <React.Fragment key={boxid} >
+                          {boxname.subMenus.map((boxn, boxnId) => (
+                            <>{mails.id === boxn.id && <div className='mailbox_name' key={boxnId} >{boxn.name}</div>}</>
                           )
                           )}
                         </React.Fragment>
                       )
 
-                      ))}
+                      )}
                     </React.Fragment>
                   </div> 
                 </div>
@@ -68,7 +68,11 @@ const Mails = ({ box, mailbox, timestamp, boxSelect, setChecked, checked, allChe
                     {timestamp}
                 </div>
                 <div className='owners'>
-                   {mail.users}
+                  <div className='sender_wrap'>
+                    {mail.users.map((sender, senderId) => (
+                      (sender.length < 5 ? <div key={senderId} style={{zIndex:{senderId}, left:displace[senderId]}}  className='sender sender_pic'>{sender}</div> : <div className='sender sender_pic'>{sender.length}</div>)
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

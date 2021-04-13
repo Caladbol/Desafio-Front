@@ -356,5 +356,19 @@ align-self: center;
 
 .owners {
   grid-area: owners;
-  justify-self: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.sender_wrap {
+  position: relative;
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  
+}
+.sender {
+position: absolute;
+top: -1.8rem;
+
 }
